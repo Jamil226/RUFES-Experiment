@@ -1,15 +1,15 @@
-# RLSFLoc: Reinforcement Learning-Based Adaptive Fusion for Fault Localization in Scalable Software Systems
+# RUFES: Reinforcement Learning-Based Unified Fusion of Execution, Semantic, and Structural Evidence for Automated Software Fault Localization
 
 Automated fault localization is a critical software engineering challenge designed to reduce manual debugging effort and accelerate bug-fixing workflows. Traditional Spectrum-Based Fault Localization (SBFL) methods rely solely on code coverage and fail to capture semantic meaning or structural dependencies. 
 
-**RLSFLoc** addresses these limitations by adaptively fusing execution, structural, and semantic evidence using a Reinforcement Learning (RL) agent. By modeling fault localization as a ranking-oriented decision-making problem, the PPO reinforcement learning agent learns to dynamically assign optimal weights to diverse evidence sources based on codebase characteristics.
+**RUFES** addresses these limitations by adaptively fusing execution, structural, and semantic evidence using a Reinforcement Learning (RL) agent. By modeling fault localization as a ranking-oriented decision-making problem, the PPO reinforcement learning agent learns to dynamically assign optimal weights to diverse evidence sources based on codebase characteristics.
 
 ---
 
 ## 🚀 Key Features and Experimental Outcomes
 
 *   **Adaptive PPO Fusion Agent:** Uses a Proximal Policy Optimization (PPO) agent to map a 9D contextual codebase state vector into optimal 3D simplex fusion weights ($\lambda_1 + \lambda_2 + \lambda_3 = 1.0$).
-*   **State-of-the-Art Localization Accuracy:** Verified evaluations on the Defects4J benchmark show RLSFLoc achieves:
+*   **State-of-the-Art Localization Accuracy:** Verified evaluations on the Defects4J benchmark show RUFES achieves:
     *   **Top-1 Accuracy:** **0.80** (presents the fault in the first rank for 80% of the bugs)
     *   **Top-3 / Top-5 / Top-10 Accuracy:** **1.00**
     *   **Mean Reciprocal Rank (MRR):** **0.8917**
@@ -73,8 +73,8 @@ The project is structured as follows:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/Jamil226/RLSFLoc-Experiment.git
-   cd RLSFLoc-Experiment
+   git clone https://github.com/Jamil226/RUFES-Experiment.git
+   cd RUFES-Experiment
    ```
 
 2. **Set up Virtual Environment:**
@@ -95,7 +95,7 @@ The project is structured as follows:
 To replicate all experimental metrics and validation plots reported in the paper:
 
 ### 1. Run Baseline Evaluations
-Compare RLSFLoc (PPO) side-by-side with Ochiai, Tarantula, DStar, Graph-Only, Transformer-Only, DeepFL-like MLP, and RankNet LTR:
+Compare RUFES (PPO) side-by-side with Ochiai, Tarantula, DStar, Graph-Only, Transformer-Only, DeepFL-like MLP, and RankNet LTR:
 ```bash
 PYTHONPATH=. python src/evaluate_baselines.py
 ```
@@ -109,7 +109,7 @@ PYTHONPATH=. python src/sensitivity_analysis.py
 *Outputs optimal grid parameters and saves plots in `results/alpha_sensitivity_plot.png` and `results/lr_sensitivity_plot.png`.*
 
 ### 3. Run Statistical Hypothesis Testing
-Verify statistical validation of RLSFLoc against all baselines using Wilcoxon signed-rank and Cliff's Delta effect size tests:
+Verify statistical validation of RUFES against all baselines using Wilcoxon signed-rank and Cliff's Delta effect size tests:
 ```bash
 PYTHONPATH=. python src/statistical_validation.py
 ```
@@ -132,7 +132,7 @@ PYTHONPATH=. pytest tests/ -v -s
 
 ## 📊 Scientific Framework and Formulations
 
-The mathematical framework powering RLSFLoc is fully aligned with implementation code:
+The mathematical framework powering RUFES is fully aligned with implementation code:
 
 1. **Ochiai suspiciousness ($S_{exec}$):**
    $$S_{exec}(v_i) = \frac{n_{ef}(v_i)}{\sqrt{|\mathcal{T}_f| \cdot (n_{ef}(v_i)+n_{ep}(v_i))}}$$
@@ -150,14 +150,14 @@ The mathematical framework powering RLSFLoc is fully aligned with implementation
 ## 📬 Open-Source Replication and Citation
 
 The source code, environment, and datasets are publicly hosted at:
-[https://github.com/Jamil226/RLSFLoc-Experiment](https://github.com/Jamil226/RLSFLoc-Experiment)
+[https://github.com/Jamil226/RUFES-Experiment](https://github.com/Jamil226/RUFES-Experiment)
 
-If you use RLSFLoc in your software engineering research, please cite our corresponding publication:
+If you use RUFES in your software engineering research, please cite our corresponding publication:
 
 ```bibtex
-@article{jamil2026rlsfloc,
-  author    = {Muhammad Jamil and Sema Bayraktar and Alpaslan Burak İnner and Adnan Kavak and Muhammad Farhan and Gautam Srivastava and Hossein Fotouhi},
-  title     = {RLSFLoc: Reinforcement Learning-Based Adaptive Fusion for Fault Localization in Scalable Software Systems},
+@article{jamil2026RUFES,
+  author    = {Muhammad Jamil},
+  title     = {RUFES: Reinforcement Learning-Based Unified Fusion of Execution, Semantic, and Structural Evidence for Automated Software Fault Localization},
   journal   = {Special Issue on AI/ML in Software Engineering},
   year      = {2026}
 }
